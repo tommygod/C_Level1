@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+<title >hero</title>
+<meta charset="UTF-8">
+<body >
+<canvas id="myCanvas" height="500" width="300">
+
+</canvas>
+
+<script >
+    var canvas=document.getElementById('myCanvas');
+    var pen=canvas.getContext('2d');
+    var j1x=0,j1y=0,j1h=0,j1w=60;
+    var j2x=0,j2y=0,j2h=0,j2w=0;
+    var j3x=0,j3y=0,j3h=0,j3w=0;
+    var gunzic=0,gunzix=60,gunziy=350;
+    var playx=40,playy=330,score=0;
+    window.addEventListener('keydown', dokeydown);
+    window.addEventListener('keyup', dokeyup);
+
+    function start(){
+        j1x=0,j1y=0,j1h=0,j1w=60;
+        j2x=0,j2y=0,j2h=0,j2w=0;
+        j3x=0,j3y=0,j3h=0,j3w=0;
+        playx=40,playy=330,score=0;
+        gunzic=0,gunzix=60,gunziy=350;
+        pen.fillStyle='#abcdef';
+        pen.fillRect(0,0,300,500);
+        pen.fillStyle='#000';
+        pen.fillRect(j1x,350,j1w,150);
+        j2x=Math.floor(Math.random()*150+20)+j1x+j1w;
+        j2w=Math.floor(Math.random()*50+20);
+        pen.fillRect(j2x,350,j2w,150);
+        j3x=Math.floor(Math.random()*150+20)+j2x+j2w;
+        j3w=Math.floor(Math.random()*50+20);
+        pen.fillRect(j3x,350,j3w,150);
+        pen.fillStyle='red';
+        pen.fillRect(playx,playy,20,20);
+        drawscroe();
+    }
+    start();
+
+
+    function dokeydown(e) {
+        var keycod = e.keyCode || e.which;
+        if (keycod === 32) {
+            gunziy -= 5;
+            gunzic = 350 - gunziy;
+            pen.strokeStyle = "yellow";
+            pen.lineWidth = 2;
+            pen.moveTo(playx + 20, playy + 20);
+            pen.lineTo(gunzix, gunziy);
+            pen.stroke();
+        } else if (keycod === 13) {
+            start();
+        }
+    }
+
+    function dokeyup(e) {
+        var keycod = e.keyCode || e.which;
+        if (keycod === 32) {
+//            gunziy = 350;
+            pen.translate(playx + 20, playy + 20);
+            pen.strokeStyle = "yellow";
+            pen.lineWidth = 4;
+            var angel=0;
+            var id =setInterval(function () {
+                pen.save();
+                pen.clearRect(-4,-gunzic,gunzic,gunzic);
+                pen.fillStyle="#abcdef";
+                pen.fillRect(-4,-gunzic,gunzic,gunzic);
+                pen.rotate( angel* Math.PI);
+                pen.beginPath();
+                pen.moveTo(0, 0);
+                pen.lineTo(0, -gunzic );
+                pen.stroke();
+                pen.restore();
+                angel += 0.05;
+                if(angel >=0.5){
+                    pen.translate(-playx - 20, - playy - 20)
+                    moveplay();
+                    clearInterval(id);
+                }
+
+
+
+
+
+            },60);
+
+
+
+//
+//            pen.beginPath();
+//            pen.strokeStyle = "#abcdef";
+//            pen.lineWidth = 4;
+//            pen.moveTo(playx + 20, playy + 20);
+//            pen.lineTo(playx + 20, 350 - gunzic);
+//            pen.stroke();
+
+        }
+    }
+
+    function moveplay() {
+        pen.beginPath();
+        pen.strokeStyle = "#abcdef";
+        pen.fillStyle = "#abcdef";
+        pen.fillRect(playx, playy, 20, 20);
+        pen.stroke();
+
+        pen.beginPath();
+        pen.strokeStyle = "red";
+        pen.fillStyle = "red";
+        playx += 5;
+        pen.fillRect(playx, playy, 20, 20);
+        pen.stroke();
+
+        if (playx <= gunzic + j1w - 20) {
+            setTimeout(moveplay, 10);
+        } else {
+            if (j1w + gunzic < (j2x + j2w) && j1w + gunzic > j2x) {
+                pen.beginPath();
+                pen.strokeStyle = "#abcdef";
+                pen.fillStyle = "#abcdef";
+                pen.fillRect(playx, playy, 20, 20);
+                pen.stroke();
+
+                pen.beginPath();
+                pen.fillStyle = "red";
+                pen.strokeStyle = "red";
+                playx = j2x + j2w - 20;
+                pen.fillRect(playx, playy, 20, 20);
+                pen.stroke();
+                score++;
+                moveall();
+            } else {
+//                pen.clearRect(0,0,300,500);
+                pen.fillStyle = "#333";
+                pen.font = "20px 宋体";
+                pen.fillText("最终得分" + score, 100, 80);
+                pen.fillText("GAME OVER", 100, 100);
+            }
+        }
+
+    }
+
+    function moveall() {
+        pen.fillStyle = "#abcdef";
+        pen.fillRect(0, 0, 300, 500);
+        pen.fillStyle = "#000000";
+        j1x--;
+        j2x--;
+        j3x--;
+        playx--;
+        pen.fillRect(j1x, 350, j1w, 150);
+        pen.fillRect(j2x, 350, j2w, 150);
+        pen.fillRect(j3x, 350, j3w, 150);
+        pen.fillStyle = "red";
+        pen.fillRect(playx, playy, 20, 20);
+        drawscroe();
+        if (j2x >= 0) {
+            setTimeout(moveall, 3)
+        } else {
+            change();
+        }
+    }
+
+
+
+
+
+    function gameover(){
+        pen.fillStyle='#abcdef';
+        pen.fillRect(0,0,300,500);
+        pen.fillStyle='#fff';
+        pen.font = "20px";
+        pen.fillText("Point:"+score,60,300);
+        pen.fillStyle='red';
+        pen.font = "30px";
+        pen.fillText("game over",40,200);
+        pen.font = "20px";
+        pen.fillText("press Enter to play",40,400);
+
+
+    }
+    function change(){
+        j1x=j2x;
+        j1w=j2w;
+        j2x=j3x;
+        j2w=j3w;
+        j3x=Math.floor(Math.random()*150+20)+j2x+j2w;
+        j3w=Math.floor(Math.random()*50+20);
+        gunzix=j1w;
+    }
+    function drawscroe(){
+        pen.fillStyle='#fff';
+        pen.font = "30px 宋体";
+        pen.fillText("SCORE:",130, 50);
+    }
+</script>
+
+
+</body>
+</html>
