@@ -44,17 +44,39 @@
                 turing = false;
             if(e.keyCode == 32){
                 var turn = setInterval(function () {
-                    angel += 2;
-                    pen.clearRect(-10,-400,500,400);
+                    angel += 0.01;
+                    pen.clearRect(-2,-400,500,400);
+                    pen.save();
                     pen.rotate(angel * Math.PI);
+                    pen.beginPath();
                     pen.moveTo(0, 0);
                     pen.lineTo(0,-line);
                     pen.stroke();
-                    if(angel >=90){
-                        pen.restore();
+                    pen.restore();
+                    if(angel >=0.5){
+                        pen.translate(-100, -400);
                         clearInterval(turn);
+                        // var move = setInterval(function () {
+                        //
+                        //
+                        //     pen.clearRect()
+                        //
+                        //
+                        //
+                        //
+                        // },100);
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                     }
-                    console.log(angel);
                 },5);
 
 
