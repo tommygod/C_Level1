@@ -59,7 +59,7 @@
     function dokeyup(e) {
         var keycod = e.keyCode || e.which;
         if (keycod === 32) {
-//            gunziy = 350;
+            gunziy = 350;
             pen.translate(playx + 20, playy + 20);
             pen.strokeStyle = "yellow";
             pen.lineWidth = 4;
@@ -77,6 +77,7 @@
                 pen.restore();
                 angel += 0.05;
                 if(angel >=0.5){
+
                     pen.translate(-playx - 20, - playy - 20)
                     moveplay();
                     clearInterval(id);
