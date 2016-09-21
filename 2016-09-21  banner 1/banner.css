@@ -1,0 +1,51 @@
+.container_box{
+    width:600px;
+    height:338px;
+    overflow:hidden;
+    position:relative;
+    margin:100px auto;
+}
+.container_box .box{
+    position:absolute;
+    width:3600px;
+    transition:all 1s;
+}
+.container_box .box div{
+    float:left;
+}
+.container_box .btns{
+    position:absolute;
+    bottom:0%;
+    left:30%;
+}
+.container_box .btns span{
+    cursor: pointer;
+    font-size:20px;
+    float:left;
+    margin-right:20px;
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+    line-height:30px;
+    text-align:center;
+    background: rgba(255,255,255,.3);
+    font-family:"微软雅黑";
+}
+.container_box .btn_left{
+    position:absolute;
+    left:0;
+    top: 40%;
+    background: rgba(123,123,123,.5);
+    width:40px;
+    height: 80px;
+}
+.container_box .btn_right{
+    position:absolute;
+    right: 0;
+    top: 40%;
+    background: rgba(123,123,123,.5);
+    width:40px;
+    height: 80px;
+    cursor: pointer;
+
+}
