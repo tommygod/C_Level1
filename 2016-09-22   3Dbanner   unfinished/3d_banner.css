@@ -1,0 +1,78 @@
+
+.box{
+    width:600px;
+    height: 400px;
+    margin:200px auto;
+    position: relative;
+    transform-style: preserve-3d;
+    transition:  all 2s;
+}
+.center:hover {
+    transform: rotateX(90deg);
+}
+.center{
+    position:absolute;
+    height: 400px;
+    transform-origin: center center -200px;
+    opacity: .5;
+    background: #1f1f1f;
+    /*transform-style: preserve-3d;*/
+}
+
+.top{
+    position: absolute;
+    height:400px;
+    transform-origin: center center -200px;
+    opacity: .5;
+    transform: rotateX(90deg);
+    /*transform-style: preserve-3d;*/
+}
+.bottom{
+    position: absolute;
+    height: 400px;
+    transform-origin: center center -200px;
+    opacity: .5;
+    transform: rotateX(-90deg);
+    /*transform-style: preserve-3d;*/
+}
+.btns{
+    position:absolute;
+    height:400px;
+    width:50px;
+    left:100px;
+    top:200px;
+
+}
+.btn{
+    background: rgba(123,123,123,.3);
+    cursor: pointer;
+    float:left;
+    width:50px;
+    line-height:80px;
+    height:80px;
+    text-align:center;
+}
+.btn_left{
+    cursor: pointer;
+    position: absolute;
+    width:50px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    background: rgba(123,123,123,.3);
+    left:100px;
+    top:100px;
+}
+.btn_right{
+    cursor: pointer;
+    position: absolute;
+    width:50px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    background: rgba(123,123,123,.3);
+    left:200px;
+    top:100px;
+
+
+}

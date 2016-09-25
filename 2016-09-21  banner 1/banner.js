@@ -16,8 +16,14 @@
     function move(num) {
         var index = num;
         var position = wid * index ;
-        // position < 0 && position == 4*num;
         box.style.left = position + "px";
+        var index_before = index -1;
+        var index_after = index + 1;
+        if(index_before < 0){index_before =4;} ;
+        if(index_after > 4){index_after =0;};
+        btn[index_before].className = "btn";
+        btn[index_after].className = "btn";
+        btn[index].className = "btn btn_on";
         movenow = true;
         setTimeout(function () {
             movenow = false;

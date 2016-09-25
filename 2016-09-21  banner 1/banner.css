@@ -1,6 +1,6 @@
 .container_box{
     width:600px;
-    height:338px;
+    height:400px;
     overflow:hidden;
     position:relative;
     margin:100px auto;
@@ -16,20 +16,20 @@
 .container_box .btns{
     position:absolute;
     bottom:0%;
-    left:30%;
 }
 .container_box .btns span{
     cursor: pointer;
     font-size:20px;
     float:left;
-    margin-right:20px;
-    width:30px;
+    width:120px;
     height:30px;
-    border-radius: 50%;
     line-height:30px;
     text-align:center;
     background: rgba(255,255,255,.3);
     font-family:"微软雅黑";
+}
+.container_box .btns .btn_on{
+    background: rgba(255,255,255,.8);
 }
 .container_box .btn_left{
     position:absolute;
