@@ -40,6 +40,7 @@
     var top=0,                 //到顶信号
         frames = 100,    //帧
         per={};
+
     setInterval(function () {
        for(var i = 0;i<data.length;i++) {
            per.move[i] += data[i] / 50;
@@ -48,10 +49,14 @@
     },1000/frames);
 
 
-    
-    horizontal_line();
-    mounth();
-    vertical_line();
+    function init() {
+        horizontal_line();
+        mounth();
+        vertical_line();
+    }
+
+
+    init();
 
 
 })();
