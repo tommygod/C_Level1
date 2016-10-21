@@ -1,0 +1,13 @@
+body{
+    background: #3E3A39;
+    color:floralwhite;
+}
+h1{
+    text-align:center;
+    border-bottom: 1px solid #FFCC00;
+    padding-bottom: 20px;
+    padding-bottom: 30px;
+}
+.art{
+    text-indent:2em;
+}
